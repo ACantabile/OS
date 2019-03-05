@@ -1,0 +1,16 @@
+/*
+添加一个任务流程，任务名以ABC为例
+1.工程增加一个文件夹Pr_ABC
+2.创建Pr_ABC.c,Pr_ABC.H文件
+3.Pr_ABC.h里面声明函数与全局变量，定义PR_ABC_EXT宏
+4.定义堆栈
+5.对相关硬件初始化函数
+6.在CCOS_CFG.H里面的优先级枚举定义任务优先级
+7.在includes.h里面加入Pr_ABD.H
+8.在工程文件夹添加Pr_ABC.C
+9.在main.c 添加err |= Pr_ABC_Init();
+10.Pr_ABC.c里面包含任务相关函数，Pr_ABC_Init，Task_ABC
+11.Task_ABC里面的循环等待必须加入OSTimeDly(XX);以防止低优先级任务无法运行
+12.中断函数有可能改变任务优先级的要加上OSIntEnter();与OSIntExit();两个函数之间运行时间越短越好
+13.有任务切换数据跨界风险的可以在处理数据的时候锁定任务切换OSSchedLock()，处理完毕再解锁OSSchedUnlock()
+*/
